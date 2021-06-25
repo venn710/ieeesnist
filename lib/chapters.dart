@@ -3,23 +3,25 @@ class Chapters extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("CHAPTERS"),centerTitle: true,),
       body: ListView(
         children: [
-          Chaptercard(imagepath:'assets/images/chap0.png',scale: 1,text: "Wie Conferencia",),
-          Chaptercard(imagepath:'assets/images/chap1.png',scale: 1,text: "Computer Society",),
-          Chaptercard(imagepath:'assets/images/chap2.png',scale: 1,text: "Communications Society",),
-          Chaptercard(imagepath:'assets/images/chap3.png',scale: 1,text: "PES",),
+          MyCard(enableca: true,imagepath:'assets/images/Chapters/chap0.png',scale: 1,text: "Wie Conferencia",),
+          MyCard(enableca: true,imagepath:'assets/images/Chapters/chap1.png',scale: 1,text: "Computer Society",),
+          MyCard(enableca: true,imagepath:'assets/images/Chapters/chap2.png',scale: 1,text: "Communications Society",),
+          MyCard(enableca: true,imagepath:'assets/images/Chapters/chap3.png',scale: 1,text: "PES",),
         ],
       ),
     );
   }
 }
 
-class Chaptercard extends StatelessWidget {
+class MyCard extends StatelessWidget {
   final double scale;
   final String text;
   final String imagepath;
-  Chaptercard({this.imagepath,this.scale,this.text});
+  final bool enableca;
+  MyCard({this.imagepath,this.scale,this.text,this.enableca});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,9 +33,9 @@ class Chaptercard extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: CircleAvatar(
+              child: (enableca)?CircleAvatar(
                 maxRadius: 100,
-                child: Image.asset(imagepath,scale:scale,),backgroundColor: Colors.white,),
+                child: Image.asset(imagepath,scale:scale,alignment: Alignment.center,),backgroundColor: Colors.white,):Image.asset(imagepath,scale:scale,alignment: Alignment.center)
             ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
