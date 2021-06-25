@@ -48,15 +48,17 @@ List<String>li=['man.png','man.png'];
  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Padding(
-        padding: const EdgeInsets.only(top:25.0),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(bottomRight: Radius.circular(20),topRight: Radius.circular(20))
-          ),
-          width:MediaQuery.of(context).size.width/1.5,
-          child: Mydrawer()),
+      drawer: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(top:20,bottom:2),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(bottomRight: Radius.circular(20),topRight: Radius.circular(20))
+            ),
+            width:MediaQuery.of(context).size.width/1.5,
+            child: Mydrawer()),
+        ),
       ),
       appBar: AppBar(),
       body:ListView(
