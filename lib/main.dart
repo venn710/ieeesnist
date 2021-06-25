@@ -50,7 +50,7 @@ List<String>li=['man.png','man.png'];
     return Scaffold(
       drawer: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(top:20,bottom:2),
+          padding: const EdgeInsets.only(top:20),
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,
@@ -62,10 +62,11 @@ List<String>li=['man.png','man.png'];
       ),
       appBar: AppBar(),
       body:ListView(
+
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Image.asset('assets/images/IEEE SNIST.png',height:150,fit: BoxFit.fill,),
+                          child: Image.asset('assets/images/IEEE SNIST.png',height:MediaQuery.of(context).size.height/3,fit: BoxFit.fill,),
                         ),
                         Center(
                           child: AnimatedTextKit(
@@ -118,6 +119,7 @@ Padding(
         shadowColor: Colors.blue[900],
         color: Colors.blue[100],
         child: Column(
+          crossAxisAlignment:CrossAxisAlignment.stretch,
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(10.0),
@@ -139,12 +141,11 @@ Padding(
                       Padding(
   padding: const EdgeInsets.all(8.0),
   child:Container(
-        height: 200,
+        height: 250,
         decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(bottomRight: Radius.circular(40)),
                     image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage('assets/images/chairpic.jpg'))
+                      image: AssetImage('assets/images/chairpic.jpg'),fit: BoxFit.fill),
         ),),
 ),
                     ],
@@ -374,16 +375,19 @@ class Mydrawer extends StatelessWidget {
         child: Container(
           child: Column(
             children: [
-              Expanded(child:TextButton(onPressed: ()=>Navigator.pop(context), child: ListTile(
-                leading:Image.asset('assets/images/Drawer/home.png'),
-                title:Text("Home",style: TextStyle(fontSize: 30),)))),
               Expanded(
-                flex:2,
+                flex: 5,
+                child:TextButton(onPressed: ()=>Navigator.pop(context), child: ListTile(
+                leading:Image.asset('assets/images/Drawer/home.png'),
+                title:Text("Home",style: TextStyle(fontSize:20),)))),
+              Expanded(
+                flex:6,
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
-                  child: Image.asset('assets/images/About/ieee.jpeg',scale: 1),
+                  child: Image.asset('assets/images/About/ieee.jpeg',),
                 )),
               Expanded(
+                flex: 5,
                 child: TextButton(
                   onPressed: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)
                   {
@@ -391,9 +395,10 @@ class Mydrawer extends StatelessWidget {
                   })),
                   child: ListTile(
                     leading:Image.asset('assets/images/Drawer/info.png'),
-                    title: Text("About",style: TextStyle(fontSize: 25)))),
+                    title: Text("About",style: TextStyle(fontSize: 20)))),
               ),
               Expanded(
+                flex: 5,
                 child: TextButton(
                   onPressed:()=>Navigator.push(context, MaterialPageRoute(builder: (context)
                   {
@@ -401,9 +406,10 @@ class Mydrawer extends StatelessWidget {
                   })),
                   child: ListTile(
                     leading:Image.asset('assets/images/Drawer/teamwork.png'),
-                    title: Text("Team",style: TextStyle(fontSize: 25),))),
+                    title: Text("Team",style: TextStyle(fontSize: 20),))),
               ),
               Expanded(
+                flex: 5,
                 child: TextButton(
                   onPressed: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)
                   {
@@ -411,9 +417,10 @@ class Mydrawer extends StatelessWidget {
                   })),
                   child: ListTile(
                     leading:Image.asset('assets/images/Drawer/event.png'),
-                    title:Text("Events",style: TextStyle(fontSize: 25)))),
+                    title:Text("Events",style: TextStyle(fontSize: 20)))),
               ),
               Expanded(
+                flex: 5,
                 child: TextButton(
                   onPressed:()=>Navigator.push(context, MaterialPageRoute(builder: (context)
                   {
@@ -421,9 +428,10 @@ class Mydrawer extends StatelessWidget {
                   })),
                   child: ListTile(
                     leading:Image.asset('assets/images/Drawer/data-center.png'),
-                    title: Text("Data Center",style: TextStyle(fontSize: 25)))),
+                    title: Text("Data Center",style: TextStyle(fontSize: 20)))),
               ),
               Expanded(
+                flex: 5,
                 child: TextButton(
                   onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)
                   {
@@ -431,9 +439,10 @@ class Mydrawer extends StatelessWidget {
                   })),
                   child: ListTile(
                     leading:Image.asset('assets/images/Drawer/student.png',),
-                    title: Text("Student Services",style: TextStyle(fontSize: 25),))),
+                    title: Text("Student Services",style: TextStyle(fontSize: 20),))),
               ),
               Expanded(
+                flex: 5,
                 child: TextButton(
                   onPressed:()=>Navigator.push(context, MaterialPageRoute(builder: (context)
                   {
@@ -441,7 +450,7 @@ class Mydrawer extends StatelessWidget {
                   })),
                   child: ListTile(
                     leading:Image.asset('assets/images/Drawer/chapter.png'),
-                    title: Text("Chapters",style: TextStyle(fontSize: 25)))),
+                    title: Text("Chapters",style: TextStyle(fontSize: 20)))),
               )
             ],
           ),
