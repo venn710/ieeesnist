@@ -208,9 +208,12 @@ class Points extends StatelessWidget {
   Points({this.text});
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Image.asset('assets/images/right.png',height: 30,),
-      title: Text(text,style: TextStyle(fontSize: 20),),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical:8.0),
+      child: ListTile(
+        leading: Image.asset('assets/images/right.png',height: 30,),
+        title: Text(text,style: TextStyle(fontSize: 20),),
+      ),
     );
   }
 }

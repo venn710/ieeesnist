@@ -2,6 +2,10 @@ import 'dart:ui';
 import 'package:ieee/Studentservices.dart';
 import 'package:ieee/about.dart';
 import 'package:ieee/chapters.dart';
+import 'package:ieee/chapters/Wie.dart';
+import 'package:ieee/chapters/computersociety.dart';
+import 'package:ieee/chapters/comsoc.dart';
+import 'package:ieee/chapters/pes.dart';
 import 'package:ieee/datacenter.dart';
 import 'package:ieee/events.dart';
 import 'package:ieee/knowmore.dart';
@@ -91,15 +95,14 @@ List<String>li=['man.png','man.png'];
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: AnimatedTextKit(
-  animatedTexts: [
-        TypewriterAnimatedText(
-                    'MESSAGE FROM THE CHAIR-PERSON' ,
-                    textStyle: const TextStyle(
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    
-                    speed: const Duration(milliseconds: 200),
+                      animatedTexts: [
+                      TypewriterAnimatedText(
+                        'MESSAGE FROM THE CHAIR-PERSON' ,
+                        textStyle: const TextStyle(
+                        fontSize: 22.0,
+                        fontWeight: FontWeight.bold,
+                        ),                    
+                        speed: const Duration(milliseconds: 200),
         ),
   ],
   repeatForever: true,
@@ -170,14 +173,24 @@ Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: CircleAvatar(
                           maxRadius: 100,
-                          child: Image.asset('assets/images/Chapters/chap0.png')),
+                          child: GestureDetector(
+                            onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)
+                            {
+                              return WIE();
+                            })),
+                            child: Image.asset('assets/images/Chapters/chap0.png'))),
                       )),
                       Expanded(child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: CircleAvatar(
                           maxRadius:100,
                           backgroundColor: Colors.white,
-                          child: Image.asset('assets/images/Chapters/chap1.png',scale: 3,)),
+                          child: GestureDetector(
+                            onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)
+                            {
+                              return CS();
+                            })),
+                            child: Image.asset('assets/images/Chapters/chap1.png',scale: 3,))),
                       )),
                     ],
         ),
@@ -187,13 +200,20 @@ Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: CircleAvatar(
                           maxRadius: 100,
-                          child: Image.asset('assets/images/Chapters/chap2.png')),
+                          child: GestureDetector(
+                            onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)
+                            {
+                              return COMSOC();
+                            })),
+                            child: Image.asset('assets/images/Chapters/chap2.png'))),
                       )),
                       Expanded(child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: CircleAvatar(
                           maxRadius: 100,
-                          child: Image.asset('assets/images/Chapters/chap3.png')),
+                          child: GestureDetector(
+                            onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context){return PES();})),
+                            child: Image.asset('assets/images/Chapters/chap3.png'))),
                       )),
                     ],
         )
