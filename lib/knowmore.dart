@@ -114,10 +114,10 @@ class _KnowmoreState extends State<Knowmore> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text("Reach us at",style: TextStyle(fontSize: 30),),
                     ),
-                    Socialmediacard(text: "Facebook",url:"https://www.facebook.com/IeeeSnist",imageurl:'assets/images/facebook.png'),
-                    Socialmediacard(text: "Instagram",url: "https://www.instagram.com/ieeesnist/",imageurl:'assets/images/instagram.png'),
-                    Socialmediacard(text: "Linkedin",url: "https://www.linkedin.com/groups/3684572/",imageurl:'assets/images/linkedin.png'),
-                    Socialmediacard(text: "Twitter",url: "https://twitter.com/Sreenidhi_SNIST",imageurl:'assets/images/twitter.png')
+                    Socialmediacard(text: "Facebook",url:"https://www.facebook.com/IeeeSnist",imageurl:'assets/images/SocialMedia/facebook.png'),
+                    Socialmediacard(text: "Instagram",url: "https://www.instagram.com/ieeesnist/",imageurl:'assets/images/SocialMedia/instagram.png'),
+                    Socialmediacard(text: "Linkedin",url: "https://www.linkedin.com/groups/3684572/",imageurl:'assets/images/SocialMedia/linkedin.png'),
+                    Socialmediacard(text: "Twitter",url: "https://twitter.com/Sreenidhi_SNIST",imageurl:'assets/images/SocialMedia/twitter.png')
                   ],
                 ),
               ),

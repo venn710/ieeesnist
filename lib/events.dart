@@ -11,6 +11,10 @@ class _EventsState extends State<Events> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("EVENTS"),
+        centerTitle: true,
+      ),
       body: ListView(
         children: [
           Padding(
@@ -39,7 +43,7 @@ class _EventsState extends State<Events> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
                                       image:DecorationImage(image: AssetImage(
-                                        'assets/images/$e'),
+                                        'assets/images/Adastra/$e'),
                                         fit: BoxFit.fill) 
                                     ),
                                   ),
@@ -88,7 +92,7 @@ class _EventsState extends State<Events> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
                                       image:DecorationImage(image: AssetImage(
-                                        'assets/images/$e'),
+                                        'assets/images/Wie/$e'),
                                         fit: BoxFit.fill) 
                                     ),
                                   ),
