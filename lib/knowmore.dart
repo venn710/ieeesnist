@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:ieee/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 import './main.dart';
 class Knowmore extends StatefulWidget {
@@ -62,10 +63,10 @@ class _KnowmoreState extends State<Knowmore> {
                     padding: const EdgeInsets.all(8.0),
                     child: Text("Our Main Activities",style: TextStyle(fontSize: 30),),
                   ),
-                   Bullets(text: "Focus on research and development.",),
-                   Bullets(text: "Promote technical awareness amongst college students.",),
-                   Bullets(text: "Imparts knowledge relating to social issues by actively volunteering at NSS unit in the college",),
-                   Bullets(text: "Conducts activities which can develop the technical cognition of a student.",)
+                   Points(text: "Focus on research and development.",),
+                   Points(text: "Promote technical awareness amongst college students.",),
+                   Points(text: "Imparts knowledge relating to social issues by actively volunteering at NSS unit in the college",),
+                   Points(text: "Conducts activities which can develop the technical cognition of a student.",)
                 ],),
               ),
             ),
@@ -76,31 +77,10 @@ class _KnowmoreState extends State<Knowmore> {
                 borderRadius: BorderRadius.circular(20),
                 color:Colors.cyan[200],
                 child: Column(children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("19",style: TextStyle(fontSize: 40,fontWeight: FontWeight.bold),),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("Executive Members",style: TextStyle(fontSize: 25),),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("3",style: TextStyle(fontSize: 40,fontWeight: FontWeight.bold),),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("Chapters",style: TextStyle(fontSize: 25),),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("1",style: TextStyle(fontSize: 40,fontWeight: FontWeight.bold),),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("Affinity Groups",style: TextStyle(fontSize: 25),),
-                  )
-                ],),
+                  Infocard(name:"Executive Members",number:'19',),
+                  Infocard(name:"Chapters",number: "3",),
+                  Infocard(name: "Affinity Groups",number: "1",)
+                  ],),
               ),
             ),
             Padding(
@@ -128,7 +108,6 @@ class _KnowmoreState extends State<Knowmore> {
     );
   }
 }
-
 class Socialmediacard extends StatelessWidget {
 String text;
 String imageurl;

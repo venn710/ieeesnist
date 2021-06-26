@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ieee/utils.dart';
 class Events extends StatefulWidget {
   @override
   _EventsState createState() => _EventsState();
@@ -200,20 +201,6 @@ class _EventsState extends State<Events> {
         ],
       ),
       
-    );
-  }
-}
-class Points extends StatelessWidget {
-  String text;
-  Points({this.text});
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical:8.0),
-      child: ListTile(
-        leading: Image.asset('assets/images/right.png',height: 30,),
-        title: Text(text,style: TextStyle(fontSize: 20),),
-      ),
     );
   }
 }

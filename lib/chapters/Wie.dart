@@ -1,15 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:ieee/utils.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:connectivity/connectivity.dart';
 class WIE extends StatefulWidget {
   @override
   _WIEState createState() => _WIEState();
 }
 
 class _WIEState extends State<WIE> {
+  void initState()
+  {
+    super.initState();
+    getconnection();
+    // subscription.onConnectivityChanged.listen((event) { 
+      // print(event);
+    // });
+  }
+  @override
+void dispose() {
+  super.dispose();
+}
+getconnection()async
+{
+var connectivityResult = await (Connectivity().checkConnectivity());
+if (connectivityResult == ConnectivityResult.mobile) {
+  print("I am connected to a mobile network.");
+} else if (connectivityResult == ConnectivityResult.wifi) {
+  print("WIFI");
+}
+else
+print("NONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+}
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         title: Text("WIE"),
@@ -85,27 +109,15 @@ class _WIEState extends State<WIE> {
               ),
             ),
           ),
-          Material(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.brown[200],
-            child: Column(children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text("Get your Women In Engineering - AG membership Right Away",textAlign: TextAlign.center,style: TextStyle(fontSize: 20),),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(onPressed:()async
-                {
-                  const url="https://www.ieee.org/membership-catalog/productdetail/showProductDetailPage.html?product=MEMWIE050";
-                  await canLaunch(url)? await launch(url):throw 'Could not launch $url';
-                } , child: Text("Sign Up")),
-              )
-            ],),
+          SignupCard(
+            link: "https://www.ieee.org/membership-catalog/productdetail/showProductDetailPage.html?product=MEMWIE050",
+            text:"Get your Women In Engineering - AG membership Right Away",
           )
         ],
       ),
     );
   }
 }
+
+
 

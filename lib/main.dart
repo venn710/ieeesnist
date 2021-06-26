@@ -10,6 +10,7 @@ import 'package:ieee/datacenter.dart';
 import 'package:ieee/events.dart';
 import 'package:ieee/knowmore.dart';
 import 'package:ieee/team.dart';
+import 'package:ieee/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -37,17 +38,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage>{
-//   AnimationController animationController;
-// @override
-// void initState()
-// {
-//   super.initState();
-//   animationController=AnimationController(vsync: this,duration: Duration(seconds:1));
-// }
-// void toggle()
-// {
-//   animationController.isDismissed?animationController.forward():animationController.reverse();
-// }
 List<String>li=['man.png','man.png'];
  @override
   Widget build(BuildContext context) {
@@ -60,7 +50,7 @@ List<String>li=['man.png','man.png'];
               color: Colors.white,
               borderRadius: BorderRadius.only(bottomRight: Radius.circular(20),topRight: Radius.circular(20))
             ),
-            width:MediaQuery.of(context).size.width/1.5,
+            width:MediaQuery.of(context).size.width/1.3,
             child: Mydrawer()),
         ),
       ),
@@ -168,54 +158,15 @@ Padding(
                     child: Center(child: Text("Affinity Groups And Society Chapters",style: TextStyle(fontSize: 30),textAlign: TextAlign.center,)),
         ),
         Row(
-                    children: [
-                      Expanded(child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: CircleAvatar(
-                          maxRadius: 100,
-                          child: GestureDetector(
-                            onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)
-                            {
-                              return WIE();
-                            })),
-                            child: Image.asset('assets/images/Chapters/chap0.png'))),
-                      )),
-                      Expanded(child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: CircleAvatar(
-                          maxRadius:100,
-                          backgroundColor: Colors.white,
-                          child: GestureDetector(
-                            onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)
-                            {
-                              return CS();
-                            })),
-                            child: Image.asset('assets/images/Chapters/chap1.png',scale: 3,))),
-                      )),
-                    ],
+        children: [
+         ChapterCard(imagepath: 'assets/images/Chapters/chap0.png',scale: 1,widget:WIE(),),
+         ChapterCard(imagepath: 'assets/images/Chapters/chap1.png',scale: 3,widget:CS(),),                      
+                  ],
         ),
         Row(
-                    children: [
-                      Expanded(child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: CircleAvatar(
-                          maxRadius: 100,
-                          child: GestureDetector(
-                            onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)
-                            {
-                              return COMSOC();
-                            })),
-                            child: Image.asset('assets/images/Chapters/chap2.png'))),
-                      )),
-                      Expanded(child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: CircleAvatar(
-                          maxRadius: 100,
-                          child: GestureDetector(
-                            onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context){return PES();})),
-                            child: Image.asset('assets/images/Chapters/chap3.png'))),
-                      )),
-                    ],
+        children: [
+         ChapterCard(imagepath: 'assets/images/Chapters/chap2.png',scale: 1,widget:COMSOC(),),                      
+         ChapterCard(imagepath: 'assets/images/Chapters/chap3.png',scale: 1,widget:PES(),),                    ],
         )
   ],
   ),
@@ -241,63 +192,24 @@ Padding(
                         Image.asset('assets/images/events.png')
                       ]
           ),
-          // height: 200,
-          // decoration: BoxDecoration(
-          //   image:DecorationImage(image: AssetImage('assets/images/events.png'))
-          // ),
       ),
   ),
 ),
-Padding(
-  padding: const EdgeInsets.all(8.0),
-  child:   Material(
-        color: Colors.red[100],
-        elevation: 20,
-        borderRadius: BorderRadius.circular(20),
-        child: Column(
-                    children: [
-                      Image.asset('assets/images/target.png',scale: 5,),
-                      Material(
-                        color: Colors.red[50],
-                        elevation: 20,
-                        borderRadius: BorderRadius.circular(20),
-                        child: Column(children: [
-                        Text("MISSION",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
-                        Bullets(text:"To make the students aware of new technological strides."),
-                        Bullets(text:"To organize events for students to bring out unique research ideas."),
-                        Bullets(text:"To bring about an increase in the membership count, so that more students can exercise the benefits of being an IEEE member.",),
-                        Bullets(text:"To ignite interest in students to produce new papers and projects.",),
-                        Bullets(text: "To make our fellow tech enthusiasts acquainted with various useful technologies by conducting unique workshops.",)
-                      ],))
-                    ],
-                    ),
-  ),
+MissionsCard(
+  li: [
+"To make the students aware of new technological strides.",
+"To organize events for students to bring out unique research ideas.",
+"To bring about an increase in the membership count, so that more students can exercise the benefits of being an IEEE member.",
+"To ignite interest in students to produce new papers and projects.",
+"To make our fellow tech enthusiasts acquainted with various useful technologies by conducting unique workshops."
+  ],
 ),
-Padding(
-  padding: const EdgeInsets.all(8.0),
-  child:   Material(
-        color: Colors.green[100],
-        elevation: 20,
-        borderRadius: BorderRadius.circular(20),
-        child: Column(
-                    children: [
-                      Image.asset('assets/images/vision.png',scale: 5,),
-                      Material(
-                        color: Colors.green[50],
-                        elevation: 20,
-                        borderRadius: BorderRadius.circular(20),
-                        child: Column(
-                          children: [
-                            Text("VISION",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
-                            Bullets(text:"To facilitate and catalyze true learning by institutionalizing research, development, and dissemination of relevant technological knowledge through our ever-growing platform."),
-                            Bullets(text: "We strive to continue being dedicated to promoting the interest of students by providing technical expertise and by showcasing their true potential.",),
-                            Bullets(text: "We shall work towards becoming an institution that not only fosters engineering excellence but social consciousness too.",)
-                          ],
-                        )
-                      )
-                    ],
-        ),
-  ),
+VisionsCard(
+  visions: [
+    "To facilitate and catalyze true learning by institutionalizing research, development, and dissemination of relevant technological knowledge through our ever-growing platform.",
+    "We strive to continue being dedicated to promoting the interest of students by providing technical expertise and by showcasing their true potential.",
+    "We shall work towards becoming an institution that not only fosters engineering excellence but social consciousness too."
+  ],
 ),
 Padding(
   padding: const EdgeInsets.all(8.0),
@@ -330,62 +242,70 @@ Padding(
         ),
   )
 ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: CarouselSlider(
-                              items: li.map((e) {
-                                return Container(
-                                  width: double.infinity,
-                                child: Material(
-                                  elevation: 20,
-                                  color: Colors.blue[100],
-                                  borderRadius: BorderRadius.circular(20),
-                                  child: Column(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(top:8.0),
-                                        child: CircleAvatar(
-                                          maxRadius: 40,
-                                          child: Image.asset('assets/images/$e'),),
-                                      ),
-                                      Text("Person 1"),
-                                      Text("Few lines from Member")
-                                    ],
-                                  ),
-                                ),
-                                );
-                              }).toList(),
-                              options: CarouselOptions(
-                              height: 180.0,
-                              enlargeCenterPage: true,
-                              autoPlay: true,
-                              aspectRatio: 16 / 9,
-                              autoPlayCurve: Curves.fastOutSlowIn,
-                              enableInfiniteScroll: true,
-                              autoPlayAnimationDuration: Duration(milliseconds:800),
-                              viewportFraction: 0.9,
-                            ),
-                      ),
-                          ),
-                      ],
-                    ),
+        Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: CarouselSlider(
+            items: li.map((e) {
+             return Container(
+             width: double.infinity,
+             child: Material(
+             elevation: 20,
+             color: Colors.blue[100],
+             borderRadius: BorderRadius.circular(20),
+             child: Column(
+             children: [
+             Padding(
+             padding: const EdgeInsets.only(top:8.0),
+             child: CircleAvatar(
+             maxRadius: 40,
+             child: Image.asset('assets/images/$e'),),
+             ),
+             Text("Person 1"),
+             Text("Few lines from Member")
+             ],
+             ),
+             ),
+             );
+             }).toList(),
+             options: CarouselOptions(
+             height: 180.0,
+             enlargeCenterPage: true,
+             autoPlay: true,
+             aspectRatio: 16 / 9,
+             autoPlayCurve: Curves.fastOutSlowIn,
+             enableInfiniteScroll: true,
+             autoPlayAnimationDuration: Duration(milliseconds:800),
+             viewportFraction: 0.9,
+             ),
+             ),
+             ),
+             ],
+             ),
     );
 
   }
 }
-
-class Bullets extends StatelessWidget {
-final String text;
-Bullets({this.text});
+class ChapterCard extends StatelessWidget {
+  Widget widget;
+  String imagepath;
+  double scale;
+  ChapterCard({
+  this.imagepath,this.scale,this.widget
+  });
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: ListTile(
-        leading: Image.asset('assets/images/bullet.png',height: 30,),
-        title: Text(text,style: TextStyle(fontSize: 20),),
-      ),
-    );
+    return Expanded(child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: CircleAvatar(
+        backgroundColor: Colors.white,
+        maxRadius: 100,
+        child: GestureDetector(
+          onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)
+          {
+            return widget;
+          })),
+          child: Image.asset(imagepath,scale:scale,))),
+    ));
   }
 }
 class Mydrawer extends StatelessWidget {
@@ -397,85 +317,50 @@ class Mydrawer extends StatelessWidget {
             children: [
               Expanded(
                 flex: 5,
-                child:TextButton(onPressed: ()=>Navigator.pop(context), child: ListTile(
-                leading:Image.asset('assets/images/Drawer/home.png'),
-                title:Text("Home",style: TextStyle(fontSize:20),)))),
+                child:TextButton(
+                  onPressed: ()=>Navigator.pop(context),
+                  child: ListTile(
+                  leading: Image.asset('assets/images/Drawer/home.png',),
+                  title: Text("HOME",textAlign: TextAlign.left,style: TextStyle(fontSize: 25),),
+              ),
+                )),
               Expanded(
                 flex:6,
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: Image.asset('assets/images/About/ieee.jpeg',),
                 )),
-              Expanded(
-                flex: 5,
-                child: TextButton(
-                  onPressed: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)
-                  {
-                    return About();
-                  })),
-                  child: ListTile(
-                    leading:Image.asset('assets/images/Drawer/info.png'),
-                    title: Text("About",style: TextStyle(fontSize: 20)))),
-              ),
-              Expanded(
-                flex: 5,
-                child: TextButton(
-                  onPressed:()=>Navigator.push(context, MaterialPageRoute(builder: (context)
-                  {
-                    return Team();
-                  })),
-                  child: ListTile(
-                    leading:Image.asset('assets/images/Drawer/teamwork.png'),
-                    title: Text("Team",style: TextStyle(fontSize: 20),))),
-              ),
-              Expanded(
-                flex: 5,
-                child: TextButton(
-                  onPressed: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)
-                  {
-                    return Events();
-                  })),
-                  child: ListTile(
-                    leading:Image.asset('assets/images/Drawer/event.png'),
-                    title:Text("Events",style: TextStyle(fontSize: 20)))),
-              ),
-              Expanded(
-                flex: 5,
-                child: TextButton(
-                  onPressed:()=>Navigator.push(context, MaterialPageRoute(builder: (context)
-                  {
-                    return Datacenter();
-                  })),
-                  child: ListTile(
-                    leading:Image.asset('assets/images/Drawer/data-center.png'),
-                    title: Text("Data Center",style: TextStyle(fontSize: 20)))),
-              ),
-              Expanded(
-                flex: 5,
-                child: TextButton(
-                  onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)
-                  {
-                    return Studentservices();
-                  })),
-                  child: ListTile(
-                    leading:Image.asset('assets/images/Drawer/student.png',),
-                    title: Text("Student Services",style: TextStyle(fontSize: 20),))),
-              ),
-              Expanded(
-                flex: 5,
-                child: TextButton(
-                  onPressed:()=>Navigator.push(context, MaterialPageRoute(builder: (context)
-                  {
-                    return Chapters();
-                  })),
-                  child: ListTile(
-                    leading:Image.asset('assets/images/Drawer/chapter.png'),
-                    title: Text("Chapters",style: TextStyle(fontSize: 20)))),
-              )
+              DrawerCard(imagepath: 'assets/images/Drawer/info.png',widget: About(),text: "About",),
+              DrawerCard(imagepath: 'assets/images/Drawer/teamwork.png',widget: Team(),text: "Team",),
+              DrawerCard(imagepath: 'assets/images/Drawer/event.png',widget: Events(),text: "Events",),
+              DrawerCard(imagepath: 'assets/images/Drawer/data-center.png',widget: Datacenter(),text: "Data Center",),
+              DrawerCard(imagepath: 'assets/images/Drawer/student.png',widget: Studentservices(),text: "Student Services",),
+              DrawerCard(imagepath: 'assets/images/Drawer/chapter.png',widget: Chapters(),text: "Chapters",)
             ],
           ),
         // ),
     ),
       );
+  }
+}
+
+class DrawerCard extends StatelessWidget {
+  Widget widget;
+  String imagepath;
+  String text;
+  DrawerCard({this.imagepath,this.text,this.widget});
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 5,
+      child: TextButton(
+        onPressed:()=>Navigator.push(context, MaterialPageRoute(builder: (context)
+        {
+          return widget;
+        })),
+        child: ListTile(
+          leading:Image.asset(imagepath),
+          title: Text(text,style: TextStyle(fontSize: 25)))),
+    );
   }
 }
