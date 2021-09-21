@@ -1,35 +1,34 @@
+import 'package:connectivity/connectivity.dart';
+// import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:ieee/utils.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
-import 'package:connectivity/connectivity.dart';
 class WIE extends StatefulWidget {
   @override
   _WIEState createState() => _WIEState();
 }
-
 class _WIEState extends State<WIE> {
+  bool _loader=false;
   void initState()
   {
     super.initState();
-    getconnection();
+    // var subscription=Connectivity();
     // subscription.onConnectivityChanged.listen((event) { 
-      // print(event);
+    //  if(event==ConnectivityResult.wifi || event==ConnectivityResult.mobile)
+    //  {
+    //    setState(() {
+    //      _loader=false;          
+    //   });
+    //  }
+    //  else
+    //  setState(() {
+    //  _loader=true;            
+    //       });
     // });
   }
   @override
 void dispose() {
   super.dispose();
-}
-getconnection()async
-{
-var connectivityResult = await (Connectivity().checkConnectivity());
-if (connectivityResult == ConnectivityResult.mobile) {
-  print("I am connected to a mobile network.");
-} else if (connectivityResult == ConnectivityResult.wifi) {
-  print("WIFI");
-}
-else
-print("NONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 }
   @override
   Widget build(BuildContext context) {
@@ -100,7 +99,12 @@ print("NONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
                   ),
                     Padding(
                     padding: const EdgeInsets.all(18.0),
-                    child: YoutubePlayerIFrame(
+                    child: (_loader)?Center(child: Column(
+                      children: [
+                        CircularProgressIndicator(),
+                        Text('Please Check Your Internet Connection',style: TextStyle(fontSize: 20),)
+                      ],
+                    )):YoutubePlayerIFrame(
                     controller: getcontroller('pDAaVRkIJTE'),
                     aspectRatio: 16 / 9,
                     ),

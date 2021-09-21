@@ -24,6 +24,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme:new ThemeData(
+          primarySwatch:Colors.grey
+      ),
       title: 'IEEE',
       home: MyHomePage(),
     );
@@ -37,8 +40,22 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>{
+class _MyHomePageState extends State<MyHomePage>with SingleTickerProviderStateMixin{
 List<String>li=['man.png','man.png'];
+AnimationController _controller;
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controller=AnimationController(vsync: this,duration: Duration(seconds: 2));
+    _controller.forward();
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _controller.dispose();
+  }
  @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,17 +67,20 @@ List<String>li=['man.png','man.png'];
               color: Colors.white,
               borderRadius: BorderRadius.only(bottomRight: Radius.circular(20),topRight: Radius.circular(20))
             ),
-            width:MediaQuery.of(context).size.width/1.3,
+            width:MediaQuery.of(context).size.width/1.4,
             child: Mydrawer()),
         ),
       ),
-      appBar: AppBar(),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("IEEE-SNIST",style: TextStyle(color: Colors.white),),
+        // backgroundColor: Colors.black.withOpacity(0.75)
+      ),
       body:ListView(
-
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Image.asset('assets/images/IEEE SNIST.png',height:MediaQuery.of(context).size.height/3,fit: BoxFit.fill,),
+                          child: Image.asset('assets/images/IEEE SNIST.png',height:MediaQuery.of(context).size.height/5,fit: BoxFit.fill,),
                         ),
                         Center(
                           child: AnimatedTextKit(
@@ -210,6 +230,84 @@ VisionsCard(
     "We strive to continue being dedicated to promoting the interest of students by providing technical expertise and by showcasing their true potential.",
     "We shall work towards becoming an institution that not only fosters engineering excellence but social consciousness too."
   ],
+),
+
+Padding(
+  padding: const EdgeInsets.all(8.0),
+  child:   Material(
+    color: Colors.deepOrange[200],
+    elevation: 10,
+    borderRadius: BorderRadius.circular(20),
+    child: TextButton(
+      onPressed: ()
+    {
+      // showDialog(context: context, builder: (context)
+      // {
+      //   return AlertDialog(content: Text("HIIIIIIIIIII"),); 
+      // });
+      // _controller.forward();
+      showModalBottomSheet(
+        isScrollControlled: true,
+        // backgroundColor: Colors.red,
+        // elevation:0,
+        shape:RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20))
+  ),
+        enableDrag: true,
+        isDismissible: true,
+        context: context, builder:(context)
+      {
+        return Padding(
+          padding:MediaQuery.of(context).viewInsets,
+          child: Container(
+            decoration: BoxDecoration(
+              color:Color.fromRGBO(220,251,220,1),
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20))
+            ),
+            height: MediaQuery.of(context).size.height/2,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset('assets/images/fingif.gif',scale: 5,),
+                ),
+            Padding(
+              padding: const EdgeInsets.only(left:20.0,right: 20.0,top:8,bottom: 8),
+              child: TextField(
+              style: TextStyle(color:Colors.black),
+              onChanged: (value) {
+                // mail=value;
+
+                // //Do something with the user input.
+              },
+              decoration: InputDecoration(
+                labelText: "Email",
+                hintText: 'Enter your mail',
+                hintStyle: TextStyle(color:Colors.black,),
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.blueAccent, width: 1.0),
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.blueAccent, width: 2.0),
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
+              ),
+          ),
+            ),
+            ElevatedButton(onPressed: (){}, child: Text("SUBSCRIBE")) 
+              ],
+            ),
+          ),
+        );
+      });
+    }, child: Text("Click Me to Subscribe for Updates",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),)),
+  ),
 ),
 Padding(
   padding: const EdgeInsets.all(8.0),

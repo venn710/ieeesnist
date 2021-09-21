@@ -1,3 +1,5 @@
+import 'package:connectivity/connectivity.dart';
+// import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:ieee/utils.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
@@ -7,6 +9,26 @@ class IEEE extends StatefulWidget {
 }
 
 class _IEEEState extends State<IEEE> {
+  bool _loader=false;
+  void initState()
+  {
+    super.initState();
+    // var subscription=Connectivity();
+    // subscription.onConnectivityChanged.listen((event) { 
+    //  if(event==ConnectivityResult.wifi || event==ConnectivityResult.mobile)
+    //  {
+    //    setState(() {
+    //      _loader=false;          
+    //   });
+    //  }
+    //  else
+    //  _loader=true;
+    // });
+  }
+  void dispose()
+  {
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +90,7 @@ class _IEEEState extends State<IEEE> {
                   ),
                     Padding(
                     padding: const EdgeInsets.all(18.0),
-                    child: YoutubePlayerIFrame(
+                    child: (_loader)?Center(child: Column(children: [CircularProgressIndicator(),Text('Please Check Your Internet Connection',style: TextStyle(fontSize: 20),)],),):YoutubePlayerIFrame(
                     controller: getcontroller('WBCt8MaNafw'),
                     aspectRatio: 16 / 9,
                     ),

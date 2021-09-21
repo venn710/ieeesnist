@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ieee/chapters/Wie.dart';
+import 'package:ieee/chapters/computersociety.dart';
+import 'package:ieee/chapters/comsoc.dart';
+import 'package:ieee/chapters/pes.dart';
 class Chapters extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -6,10 +10,10 @@ class Chapters extends StatelessWidget {
       appBar: AppBar(title: Text("CHAPTERS"),centerTitle: true,),
       body: ListView(
         children: [
-          MyCard(enableca: true,imagepath:'assets/images/Chapters/chap0.png',scale: 1,text: "Wie Conferencia",),
-          MyCard(enableca: true,imagepath:'assets/images/Chapters/chap1.png',scale: 1,text: "Computer Society",),
-          MyCard(enableca: true,imagepath:'assets/images/Chapters/chap2.png',scale: 1,text: "Communications Society",),
-          MyCard(enableca: true,imagepath:'assets/images/Chapters/chap3.png',scale: 1,text: "PES",),
+          GestureDetector(onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)=>WIE())), child: MyCard(enableca: true,imagepath:'assets/images/Chapters/chap0.png',scale: 1,text: "Wie Conferencia",)),
+          GestureDetector(onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)=>CS())),child: MyCard(enableca: true,imagepath:'assets/images/Chapters/chap1.png',scale: 1,text: "Computer Society",)),
+          GestureDetector(onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)=>COMSOC())),child: MyCard(enableca: true,imagepath:'assets/images/Chapters/chap2.png',scale: 1,text: "Communications Society",)),
+          GestureDetector(onTap: ()=>Navigator.push(context,MaterialPageRoute(builder: (context)=>PES())),child: MyCard(enableca: true,imagepath:'assets/images/Chapters/chap3.png',scale: 1,text: "PES",)),
         ],
       ),
     );

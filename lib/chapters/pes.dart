@@ -1,6 +1,9 @@
+import 'dart:async';
+
+// import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:ieee/utils.dart';
-import '../events.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 import 'package:url_launcher/url_launcher.dart';
 class PES extends StatefulWidget {
@@ -9,10 +12,47 @@ class PES extends StatefulWidget {
 }
 
 class _PESState extends State<PES> {
+  bool _loader=false;
+  Stream st;
+  // Connectivity subscription=Connectivity();
+    void initState()
+  {
+    // print("CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMMMMMMMMMMEEEEEEEEEEEEE");
+    super.initState();
+    // getconnection();
+  }
+  @override
+void dispose() {
+  print("disposed");
+  super.dispose();
+}
+// void getconnection()
+// {
+//     st=subscription.onConnectivityChanged;
+//     if(mounted)
+//     {
+//     st.listen((event){ 
+//      print("##################################");
+//       print(event);
+//      print("##################################");
+//      if(event==ConnectivityResult.wifi || event==ConnectivityResult.mobile)
+//      {
+//        setState(() {
+//          _loader=false;          
+//       });
+//      }
+//      else if(event==ConnectivityResult.none)
+//      setState(() {
+//             _loader=true;
+//           });
+//     });
+//     }
+// }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black45,
         title: Text("PES"),
         centerTitle: true,
       ),
@@ -53,7 +93,6 @@ class _PESState extends State<PES> {
                       child: ColorFiltered(
                         colorFilter:ColorFilter.mode(Colors.green[200], BlendMode.darken),
                         child: Image.asset('assets/images/Chapters/chap3.png',)))
-                    // MyCard(enableca:false,imagepath: 'assets/images/Chapters/chap3.png',text: "PES",),
                   )
                 ],
               ),
@@ -77,12 +116,17 @@ class _PESState extends State<PES> {
                   ),
                     Padding(
                     padding: const EdgeInsets.all(18.0),
-                    child: YoutubePlayerIFrame(
+                    child: (_loader)?Center(child: Column(
+                      children: [
+                        CircularProgressIndicator(),
+                        Text('Please Check Your Internet Connection',style: TextStyle(fontSize: 20),)
+                      ],
+                    )):YoutubePlayerIFrame(
                     controller: getcontroller('BrxdLNDxWOw'),
                     aspectRatio: 16 / 9,
                     ),
                   ),
-                ],
+               ],
               ),
             ),
           ),
